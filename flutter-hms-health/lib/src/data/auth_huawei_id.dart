@@ -30,7 +30,7 @@ class AuthHuaweiId {
   final String? givenName;
   final String? familyName;
   final int? homeZone;
-
+  final String? serverAuthCode;
   /// Authorized permission scopes
   List<String>? grantedScopes;
   List<dynamic>? extensionScopes;
@@ -50,22 +50,24 @@ class AuthHuaweiId {
     this.homeZone,
     this.grantedScopes,
     this.extensionScopes,
+    this.serverAuthCode
   });
 
   factory AuthHuaweiId.fromMap(Map<dynamic, dynamic> map) {
     AuthHuaweiId instance = AuthHuaweiId(
-      openId: map['openId'],
-      photoUriString: map['photoUriString'],
-      accessToken: map['accessToken'],
-      displayName: map['displayName'],
-      status: map['status'],
-      gender: map['gender'],
-      unionId: map['unionId'],
-      idToken: map['idToken'],
-      expirationTimeSecs: map['expirationTimeSecs'],
-      givenName: map['givenName'],
-      familyName: map['familyName'],
-      homeZone: map['homeZone'],
+        openId: map['openId'],
+        photoUriString: map['photoUriString'],
+        accessToken: map['accessToken'],
+        displayName: map['displayName'],
+        status: map['status'],
+        gender: map['gender'],
+        unionId: map['unionId'],
+        idToken: map['idToken'],
+        expirationTimeSecs: map['expirationTimeSecs'],
+        givenName: map['givenName'],
+        familyName: map['familyName'],
+        homeZone: map['homeZone'],
+        serverAuthCode: map['serverAuthCode']
     );
     if (map['grantedScopes'] != null) {
       List<String> grantedScopes = <String>[];
@@ -102,6 +104,7 @@ class AuthHuaweiId {
       'homeZone': homeZone,
       'extensionScopes': extensionScopes,
       'grantedScopes': grantedScopes,
+      'serverAuthCode': serverAuthCode
     }..removeWhere((String k, dynamic v) => v == null);
   }
 
